@@ -61,7 +61,7 @@ function animate(){
 	sphere2 = new THREE.Mesh(geometry2,material2);
 	wireframe2 = new THREE.LineSegments(new THREE.EdgesGeometry(geometry2),mat2);
 	scene.add(wireframe2);
-	//rot+=.01;
+	rot+=.01;
 	wireframe2.rotation.y=rot;
 	//wireframe2 =
 	//console.log(squash);
