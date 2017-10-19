@@ -63,8 +63,6 @@ function animate(){
 	scene.add(wireframe2);
 	rot+=.01;
 	wireframe2.rotation.y=rot;
-	//wireframe2 =
-	//console.log(squash);
 	if(up){
 		squash=squash+.1;
 	}else{
