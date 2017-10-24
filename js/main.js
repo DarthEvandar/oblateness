@@ -41,12 +41,26 @@ var material2 = new THREE.MeshBasicMaterial( {color: 0xff000} );
 var sphere2 = new THREE.Mesh( geometry2, material2 );
 //scene.add( sphere2 );
 var geo2 = new THREE.EdgesGeometry(geometry2);
-var mat2 = new THREE.LineBasicMaterial( { color: 0xffff00, linewidth: 2 } );
+var mat2 = new THREE.LineBasicMaterial( { color: 0xd3d3d3, linewidth: 2 } );
 var wireframe2 = new THREE.LineSegments( geo2, mat2 );
 //scene.add( wireframe );
 //scene.add( sphere );
 //scene.add(sphere2);
 scene.add(wireframe2);
+var tMesh;
+var loader2 = new THREE.TextureLoader();
+loader2.load('rings.jpg', function(texture){
+	var tGeometry = new THREE.TorusGeometry(40,2,2,70,Math.PI*2);
+	var tMat = new THREE.MeshBasicMaterial({map:texture,overdraw:0.5});
+	tMesh = new THREE.Mesh(tGeometry,tMat);
+	tMesh.rotation.x=90;
+	tMesh.position.y+=5;
+	tMesh.rotation.y+=.5;
+	tMesh.position.x-=2;
+	scene.add(tMesh);
+});
+
+
 var squash = 0;
 var rot = 0;
 var up = true;
@@ -55,7 +69,7 @@ function animate(){
 	sphere.rotation.y+=.01
 	//sphere.rotation.y+=.01
 	//sphere.rotation.y+=.01;
-		
+	tMesh.rotation.z-=.01;
 	scene.remove(wireframe2);
 	geometry2 = new THREE.EllipsoidGeometry(60,60-(squash),60,32,32,0,Math.PI*2,0,Math.PI);
 	sphere2 = new THREE.Mesh(geometry2,material2);
